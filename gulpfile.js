@@ -15,7 +15,7 @@ var error = function(e){
     console.error(e.stack);
   }
   process.exit(1);
-}
+};
 
 gulp.task('karma', function (done) {
   new Server({
