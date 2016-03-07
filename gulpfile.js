@@ -16,7 +16,6 @@ var error = function(e){
   }
   process.exit(1);
 };
-/////////////
 gulp.task('karma', function (done) {
   new Server({
     configFile: __dirname + '/karma.conf.js',
