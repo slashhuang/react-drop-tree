@@ -1,0 +1,1 @@
+import indexStyle from './src/index.less';

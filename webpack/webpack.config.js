@@ -7,7 +7,7 @@ var config = require('../package.json');
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 module.exports ={
-    entry:[path.join(process.cwd(),'src/index.js')],
+    entry:[path.join(process.cwd(),'index.js')],
     devtoll:'source-map',
     resolve:{
         modulesDirectories: [
