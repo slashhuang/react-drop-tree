@@ -81,6 +81,8 @@
                 ]
             }
         ];
+    import React, { Component } from 'react';
+    import {render} from 'react/lib/ReactDOM';    
 	import {DropDownMenu, MultiDropDownMenu, DropDownSelect,DropDownSuggestion} from "eg-dropdown";
     	class ModuleName extends Component {
     	render(){
