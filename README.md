@@ -90,12 +90,10 @@
 ```
 ## UI展示
 >树状下拉选项图
-
-<img src='./assets/eg-dropdown.png' width='300px'>
+![树状下拉选项图](./assets/eg-dropdown.png)
 
 >普通下拉单选和展示
-
-<img ssrc='./assets/eg-dropdown-demo.png' width='300px'>
+![普通下拉单选和展示](./assets/eg-dropdown-demo.png)
 
 ## 使用指南
 > 请参考example/src/index.js文件
