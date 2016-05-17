@@ -1,13 +1,17 @@
 # eg-dropdown
 
-使用react构建pc端应用的下拉菜单解决方案，配合eagle-ui将使界面和功能更完善
+>使用react构建pc端应用的下拉菜单解决方案，配合eagle-ui将使界面和功能更完善
 
- MultiDropDownMenu 渲染树状层级勾选框，可支持无限层级。仅仅依赖简单的数据结构
- DropDownMenu 渲染单层下拉列表
- DropDownSelect 渲染单层下拉单选框
- DropDownSuggestion 渲染联想词下拉框
+> MultiDropDownMenu 渲染树状层级勾选框，可支持无限层级,仅仅依赖简单的数据结构
+ 
+>DropDownMenu 渲染单层下拉列表
+ 
+>DropDownSelect 渲染单层下拉单选框
+ 
+ 
+>DropDownSuggestion 渲染联想词下拉框
 
-## 使用
+## code example(代码示例)
 
 ``` javascript
  let mockMultiDropData=[
@@ -91,7 +95,7 @@
 	import {DropDownMenu, MultiDropDownMenu, DropDownSelect,DropDownSuggestion} from "eg-dropdown";
     	class ModuleName extends Component {
     	render(){
-               <MultiDropDownMenu keyName='typeName' dropDownData={mockMultiDropData} title="树状列表选择" ref="MultiDropDownMenu"/>
+             <MultiDropDownMenu dropDownData={mockMultiDropData} keyName='typeName' leafName='leaf' title="树状列表选择" ref="MultiDropDownMenu"/>
     	}
     	}
 ```
@@ -102,16 +106,16 @@
 >普通下拉单选和展示
 ![普通下拉单选和展示](/assets/eg-dropdown-demo.png)
 
-## 使用指南
+## instructions[使用方式]
 > 请参考example/src/index.js文件
 
-## 下载
+## download(下载)
 
 ```	bash
-    #使用
-    npm install eg-dropdown
-	#例子演示	
-	npm run demo	
+    #usage
+        npm install eg-dropdown
+	#demo
+	    npm run demo	
 ```
 
 

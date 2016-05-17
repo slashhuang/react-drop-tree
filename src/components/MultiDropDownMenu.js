@@ -12,11 +12,13 @@ export default class MultiDropDownMenu extends Component {
             dropDownQueue:[],//1代表浮动在1.2; 0代表浮动在2.1，
             formGroup:[],//最后存取的数据
             title:props.title,
-            keyName:props.keyName
+            keyName:props.keyName,
+            leafName:props.leafName
         };
         this.formData=this.state.formGroup;
     }
     static defaultProps={
+        leafName:'leaf',
         keyName:'keyName',
         title:'下拉菜单'
     };
@@ -28,7 +30,11 @@ export default class MultiDropDownMenu extends Component {
         /**
          * 初始化展示头部文字
          * */
-        title:PropTypes.string
+        title:PropTypes.string,
+        /**
+         * 叶子节点的键值(true or false)
+         * */
+        leafName:PropTypes.string
     };
 
     /**
@@ -163,11 +169,12 @@ export default class MultiDropDownMenu extends Component {
      * active的序数号码dropDownQueue[depth+1]
      */
     renderChildMenu(listData,depth,dropDownQueue){
+        let {leafName}=this.state;
         let activeIndex = dropDownQueue[depth];
         let XML =  <ul className="multi-drop-down-list select-drop-down-list" key={depth}>
             {
                 listData&&listData.map((ele,index)=>{
-                    return ele.leaf?this.renderList('leaf',ele,activeIndex,index,depth):this.renderList('branch',ele,activeIndex,index,depth);
+                    return ele[leafName]?this.renderList('leaf',ele,activeIndex,index,depth):this.renderList('branch',ele,activeIndex,index,depth);
                 })
             }
         </ul>;
