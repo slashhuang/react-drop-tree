@@ -2,6 +2,11 @@
 
 使用react构建pc端应用的下拉菜单解决方案，配合eagle-ui将使界面和功能更完善
 
+ MultiDropDownMenu 渲染树状层级勾选框，可支持无限层级。仅仅依赖简单的数据结构
+ DropDownMenu 渲染单层下拉列表
+ DropDownSelect 渲染单层下拉单选框
+ DropDownSuggestion 渲染联想词下拉框
+
 ## 使用
 
 ``` javascript
@@ -86,7 +91,7 @@
 	import {DropDownMenu, MultiDropDownMenu, DropDownSelect,DropDownSuggestion} from "eg-dropdown";
     	class ModuleName extends Component {
     	render(){
-    	    	<MultiDropDownMenu  dropDownData={mockMultiDropData} title="树状列表选择" ref="MultiDropDownMenu"/>
+               <MultiDropDownMenu keyName='typeName' dropDownData={mockMultiDropData} title="树状列表选择" ref="MultiDropDownMenu"/>
     	}
     	}
 ```

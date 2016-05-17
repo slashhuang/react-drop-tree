@@ -13,6 +13,20 @@ export default class DropDownSelect extends Component {
         };
         this.formData=this.state.formGroup
     }
+    static defaultProps={
+        dropDownData:[],
+        title:'单层下拉列表'
+    };
+    static propTypes= {
+        /**
+         * ui展示的数据结构中的键值
+         * */
+        title:PropTypes.string,
+        /**
+         * 初始化展示头部文字
+         * */
+        dropDownData:PropTypes.array
+    };
 
     checkboxHandler(ele){
         var cachedFormGroup=this.state.formGroup;
@@ -36,11 +50,11 @@ export default class DropDownSelect extends Component {
         })
         this.formGroup= this.state.formGroup;
     }
-    renderChildMenu(selectDataSource){
+    renderChildMenu(dropDownData){
         let {formGroup}= this.state;
         let XML =  <ul className="select-drop-down-list">
             {
-                selectDataSource&&selectDataSource.map((ele)=>{
+                dropDownData&&dropDownData.map((ele)=>{
                     let name = ele.name;
                     return <li className="select-drop-down-input"
                                key={ele.name}
@@ -57,7 +71,7 @@ export default class DropDownSelect extends Component {
     }
 
     render(){
-        let {selectDataSource,title}= this.props;
+        let {dropDownData,title}= this.props;
         let {formGroup}=this.state;
         return(
             <div className='question-multi-menu'>
@@ -68,7 +82,7 @@ export default class DropDownSelect extends Component {
                     <i className='drop-down-arrow'></i>
                 </div>
                 <div className="question-multi-menu-body">
-                    {this.renderChildMenu(selectDataSource)}
+                    {this.renderChildMenu(dropDownData)}
                 </div>
             </div>
         );

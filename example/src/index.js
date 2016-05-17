@@ -98,13 +98,13 @@ export default class IndexModule extends Component {
         return (
             <div className="paddingSpace">
                 <div style={{fontSize:'12px',display:'inline-block',width:'200px'}}>
-                    <MultiDropDownMenu  dropDownData={mockMultiDropData} title="树状列表选择" ref="MultiDropDownMenu"/>
+                    <MultiDropDownMenu keyName='typeName' dropDownData={mockMultiDropData} title="树状列表选择" ref="MultiDropDownMenu"/>
                 </div>
                 <div style={{fontSize:'12px',display:'inline-block',width:'200px'}}>
                     <DropDownMenu  dropDownData={menuData} title='单层下拉列表'/>
                 </div>
                 <div style={{fontSize:'12px',display:'inline-block',width:'200px'}}>
-                    <DropDownSelect  selectDataSource={bu} title='下拉选择框' ref="DropDownSelect"/>
+                    <DropDownSelect  dropDownData={bu} title='下拉选择框' ref="DropDownSelect"/>
                 </div>
                 <div style={{fontSize:'12px',display:'inline-block',width:'200px',verticalAlign:'top'}}>
                     <DropDownSuggestion url={'/package.json'} placeHolder='下拉联想框' ref="DropDownSuggestion"/>

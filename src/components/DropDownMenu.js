@@ -13,6 +13,20 @@ export default class DropDownMenu extends Component {
             dropDownData:props.dropDownData||[]
         }
     }
+    static defaultProps={
+        dropDownData:[],
+        title:'单层下拉列表'
+    };
+    static propTypes= {
+        /**
+         * ui展示的数据结构中的键值
+         * */
+        title:PropTypes.string,
+        /**
+         * 初始化展示头部文字
+         * */
+        dropDownData:PropTypes.array
+    };
     clickCallback(hint){
         this.setState({
             hint:hint

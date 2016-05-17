@@ -17,6 +17,20 @@ export default class DropDownSuggestion extends Component {
         };
         this.formData=this.state.targetContact;
     }
+    static defaultProps={
+        dropDownData:[],
+        title:'下拉选择框'
+    };
+    static propTypes= {
+        /**
+         * ui展示的数据结构中的键值
+         * */
+        title:PropTypes.string,
+        /**
+         * 初始化展示头部文字
+         * */
+        dropDownData:PropTypes.array
+    };
     componentDidMount(){
         var that=this;
         findDOMNode(this.refs['suggestContainer']).addEventListener('mouseleave',()=>{
@@ -46,6 +60,9 @@ export default class DropDownSuggestion extends Component {
         this.setState({
             title:value
         });
+        /**
+         * 网络请求获取下拉框需要的数据
+         */
         fetch(url).then(function(data){
             return data.json()
         }).then((data)=>{

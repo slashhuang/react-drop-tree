@@ -11,10 +11,25 @@ export default class MultiDropDownMenu extends Component {
         this.state={
             dropDownQueue:[],//1代表浮动在1.2; 0代表浮动在2.1，
             formGroup:[],//最后存取的数据
-            title:props.title
+            title:props.title,
+            keyName:props.keyName
         };
         this.formData=this.state.formGroup;
     }
+    static defaultProps={
+        keyName:'keyName',
+        title:'下拉菜单'
+    };
+    static propTypes= {
+        /**
+         * ui展示的数据结构中的键值
+         * */
+        keyName:PropTypes.string,
+        /**
+         * 初始化展示头部文字
+         * */
+        title:PropTypes.string
+    };
 
     /**
      * 渲染标题
@@ -23,8 +38,9 @@ export default class MultiDropDownMenu extends Component {
      * @return {*}
      */
    renderTitle(formGroup){
+        let keyName=this.state.keyName;
        return formGroup&&formGroup.reduce((pre,ele)=>{
-           return pre+ele['typeName']+';'
+           return pre+ele[keyName]+';'
        },'')
    }
 
@@ -54,7 +70,7 @@ export default class MultiDropDownMenu extends Component {
      * @return {XML}
      */
     renderSelectMenu(selectDataSource){
-        let {formGroup}= this.state;
+        let {formGroup,keyName}= this.state;
         let XML =  <ul className="select-drop-down-list">
             {
                 selectDataSource&&selectDataSource.map((ele)=>{
@@ -62,7 +78,7 @@ export default class MultiDropDownMenu extends Component {
                         <i className={formGroup.indexOf(ele)<0?'check-box':'check-box active'}>
                             <b></b>
                         </i>
-                        <div className="select-drop-down-check-content"> {ele.typeName}</div>
+                        <div className="select-drop-down-check-content"> {ele[keyName]}</div>
                     </li>
                 })
             }
@@ -71,24 +87,24 @@ export default class MultiDropDownMenu extends Component {
     }
     renderList(type,ele,activeIndex,index,depth){
         let xml = null;
-        let {formGroup}=this.state;
+        let {formGroup,keyName}=this.state;
         if(type=='branch'){
-            xml = <li key={depth+ele.typeName} className={index==activeIndex?"on":''}>
+            xml = <li key={depth+ele[keyName]} className={index==activeIndex?"on":''}>
                 <div className='multi-drop-down-list-content'
                      onMouseOver={()=>{
                                     this.calculateNextMenuTree(depth,index)
                                  }}
                     >
-                    {ele.typeName}
+                    {ele[keyName]}
                 </div>
                 <em></em>
             </li>
         }else{
-            xml = <li className="select-drop-down-input" onClick={()=>{this.checkboxHandler(ele)}} key={depth+ele.typeName}>
+            xml = <li className="select-drop-down-input" onClick={()=>{this.checkboxHandler(ele)}} key={depth+ele[keyName]}>
                 <i className={formGroup.indexOf(ele)<0?'check-box':'check-box active'}>
                     <b></b>
                 </i>
-                <div className="select-drop-down-check-content"> {ele.typeName}</div>
+                <div className="select-drop-down-check-content"> {ele[keyName]}</div>
             </li>
         }
         return  xml;
