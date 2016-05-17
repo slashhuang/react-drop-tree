@@ -5,6 +5,82 @@
 ## 使用
 
 ``` javascript
+ let mockMultiDropData=[
+            {
+                "typeName": "第1.0级",
+                "children": [
+                    {
+                        "typeName": "第2.0级",
+                        "children": [
+                            {
+                            "typeName": "第3.0级",
+                            "children": [ ],
+                            "leaf":true
+                            },
+                            {
+                                "typeName":"第3.1级",
+                                "children": [{
+                                    "typeName":"第4.0级",
+                                    "children": [
+                                        {
+                                            "typeName":"第5.0级",
+                                            "children": [ ],
+                                            "leaf":true
+                                        },
+                                        {
+                                            "typeName": "第5.1级",
+                                            "children": [ ]
+                                        },
+                                        {
+                                            "typeName": "第5.2级",
+                                            "children": [ ],
+                                            "leaf":true
+                                        }]
+                                    },
+                                    {
+                                        "typeName": "第3.2级",
+                                        "children": [ ]
+                                    },
+                                    {
+                                        "typeName": "第3.3级",
+                                        "children": [ ],
+                                        "leaf":true
+                                    }]
+                            },
+                            {
+                                "typeName": "第3.2级",
+                                "children": [ ]
+                            },
+                            {
+                                "typeName": "第3.3级",
+                                "children": [ ],
+                                "leaf":true
+                            }
+                        ]
+                    },
+                    {
+                        "typeName": "第2.1级",
+                        "children": [ ],
+                        "leaf":true
+                    }
+                ]
+            },
+            {
+                "typeName": "第1.1级",
+                "children": [
+                    {
+                        "typeName":"第2.0级",
+                        "children": [
+                            {
+                                "typeName": "3.0级",
+                                "children": [ ],
+                                "leaf":true
+                            }
+                        ]
+                    }
+                ]
+            }
+        ];
 	import {DropDownMenu, MultiDropDownMenu, DropDownSelect,DropDownSuggestion} from "eg-dropdown";
     	class ModuleName extends Component {
     	render(){
