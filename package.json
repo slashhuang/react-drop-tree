@@ -1,11 +1,14 @@
 {
   "name": "module-template",
   "version": "0.1.1",
-  "description": "模块开发脚手架项目",
+  "description": "dropdown for react pc app",
   "main": "lib/",
-  "repository": "git://code.dianpingoa.com/min.xiao/module-template.git",
+  "repository": "git@github.com:future-team/eg-dropdown.git",
   "keywords": [
-    "core"
+    "engle-ui",
+    "eagle",
+    "dropdown",
+    "react"
   ],
   "scripts": {
     "build": "node_modules/.bin/gulp && node_modules/.bin/gulp min",
@@ -15,10 +18,11 @@
   },
   "license": "MIT",
   "author": {
-    "name": "min.xiao@dianping.com",
-    "email": "min.xiao@dianping.com"
+    "name": "xiaogang.huang@dianping.com",
+    "email": "xiaogang.huang@dianping.com"
   },
-  "dependencies":{},
+  "contributors":[],
+  "dependencies": {},
   "devDependencies": {
     "babel": "^6.0.15",
     "babel-core": "^5.8.23",
@@ -34,6 +38,7 @@
     "gulp-less": "^3.0.3",
     "gulp-load-plugins": "^1.0.0-rc.1",
     "gulp-minify-css": "^1.2.1",
+    "gulp-open": "^2.0.0",
     "gulp-rename": "^1.2.2",
     "gulp-util": "^3.0.6",
     "gulp-webpack": "^1.5.0",
@@ -54,7 +59,7 @@
     "webpack-dev-server": "^1.10.1"
   },
   "bugs": {
-    "url": "http://code.dianpingoa.com/min.xiao/module-template/issues"
+    "url": "https://github.com/future-team/eg-dropdown/issues"
   },
-  "homepage": "http://code.dianpingoa.com/min.xiao/module-template"
+  "homepage": "https://github.com/future-team/eg-dropdown"
 }

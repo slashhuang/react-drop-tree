@@ -4,6 +4,8 @@ var webpack = require('webpack');
 var Server = require('karma').Server;
 var demoWebpackConfig = require('./webpack/demo.config');
 var webpackConfig = require('./webpack/webpack.config');
+var WebpackDevServer = require("webpack-dev-server");
+var open = require('gulp-open');
 
 var babel = require('gulp-babel');
 
@@ -23,14 +25,28 @@ gulp.task('karma', function (done) {
   }, done).start();
 });
 
+gulp.task('open', function () {
+  gulp.src(__filename)
+      .pipe(open({uri: "http://127.0.0.1:8081/webpack-dev-server/example/index.html"}));
+});
+
 gulp.task('demo-webpack', function(done) {
-  webpack(demoWebpackConfig).run(function(err, stats) {
-    if(err) throw new gutil.PluginError("demo-webpack", err);
-    gutil.log("[webpack]", stats.toString({
-      // output options
-    }));
-    done();
+
+  var compiler = webpack(demoWebpackConfig);
+
+  var server = new WebpackDevServer(compiler, {
+    hot: true,
+    historyApiFallback: false,
+    /*proxy: {
+     "*": "http://localhost:9090"
+     },*/
+    filename: config.name+".js",
+    publicPath: "/example/js",
+    //headers: { "X-Custom-Header": "yes" },
+    stats: { colors: true }
   });
+  server.listen(8081, "localhost", function() {});
+
 });
 
 gulp.task('require-webpack', function(done) {
@@ -72,5 +88,5 @@ gulp.task('watch', function () {
 
 gulp.task('default', ['babel','require-webpack'/*, 'html', 'asset'*/]);
 gulp.task('test',['karma']);
-gulp.task('demo', ['demo-webpack']);
+gulp.task('demo', ['demo-webpack','open']);
 gulp.task('min',['min-webpack']);

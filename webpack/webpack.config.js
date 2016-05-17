@@ -27,6 +27,12 @@ module.exports ={
             commonjs2: 'react',
             commonjs: 'react',
             amd: 'react'
+        },
+        'react/lib/ReactDOM': {
+            root: 'ReactDom',
+            commonjs2: 'react/lib/ReactDOM',
+            commonjs: 'react/lib/ReactDOM',
+            amd: 'react/lib/ReactDOM'
         }
     }],
     module:{
@@ -38,16 +44,11 @@ module.exports ={
             },
             {
                 test: /\.less$/,
-                loader: "style-loader!css-loader!less-loader"
-            }/*,
-            {
-                test: /\.less$/,
                 loader: ExtractTextPlugin.extract("style-loader", "css-loader!less-loader")
-            },*/
+            }
         ]
     },
     plugins: [
-        //new webpack.optimize.CommonsChunkPlugin('common.js')
-        //new ExtractTextPlugin(path.join(config.name+'.css'))
+        new ExtractTextPlugin(path.join('example.css'))
     ]
 };
