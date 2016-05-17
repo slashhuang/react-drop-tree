@@ -71,26 +71,7 @@ export default class MultiDropDownMenu extends Component {
             title:this.renderTitle(cachedFormGroup)||this.props.title
         })
     }
-    /**
-     * 渲染多选框
-     * @return {XML}
-     */
-    renderSelectMenu(selectDataSource){
-        let {formGroup,keyName}= this.state;
-        let XML =  <ul className="select-drop-down-list">
-            {
-                selectDataSource&&selectDataSource.map((ele)=>{
-                    return <li className="select-drop-down-input" onClick={()=>{this.checkboxHandler(ele)}}>
-                        <i className={formGroup.indexOf(ele)<0?'check-box':'check-box active'}>
-                            <b></b>
-                        </i>
-                        <div className="select-drop-down-check-content"> {ele[keyName]}</div>
-                    </li>
-                })
-            }
-        </ul>;
-        return XML;
-    }
+
     renderList(type,ele,activeIndex,index,depth){
         let xml = null;
         let {formGroup,keyName}=this.state;
