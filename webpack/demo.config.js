@@ -22,46 +22,60 @@ var getEntry =function() {
 };
 
 module.exports =extend({}, {
-    entry:baseFileDir+'src/index.js',
+    //entry:baseFileDir+'src/index.js',
+    devtool:'eval',
+    entry:[
+        'webpack-dev-server/client?http://localhost:8081',
+        'webpack/hot/only-dev-server',
+        './example/src/index.js'
+    ],
     output:{
-        libraryTarget: 'umd',
-        path:baseFileDir+'js',
-        filename:'example.js'
+        path:path.join(process.cwd(),'dist'),
+        filename:config.name+'.js'
     },
     module:{
-        loaders:[
+        loaders:[/*
+         {
+         test: /date-time\.js$/,
+         loaders: ['muiLocal', 'babel']
+         },*/
             {
-                test: /\.js$/,
-                loaders: ['babel'],
+                test: /\.jsx?$/,
+                loaders: ['react-hot', 'babel'],
                 exclude: /node_modules/
             },
-             {
+            {
                 test: /\.less$/,
-                loader: ExtractTextPlugin.extract("style-loader", "css-loader!less-loader")
-             }
+                loader: "style-loader!css-loader!less-loader"
+            },
+            {
+                test   : /\.(ttf|eot|svg|woff(2)?)(\?[a-z0-9]+)?$/,
+                loader : 'file-loader'
+            }
         ]
     },
     plugins: [
-        new ExtractTextPlugin(path.join('example.css'))
+        new webpack.HotModuleReplacementPlugin(),
+        new webpack.NoErrorsPlugin()
     ]
 });
 /*
-module:{
-    module:{
-        loaders:[
-            {
-                test: /\.js$/,
-                loader: 'babel',
-                exclude: /node_modules/
-            },
-            {
-                test: /\.less$/,
-                loader: ExtractTextPlugin.extract("style-loader", "css-loader!less-loader")
-            }
-        ]
-    }
-},
-plugins: [
-    new ExtractTextPlugin(path.join('example.css'))
-]
-    */
+ module:{
+ module:{
+ loaders:[
+ {
+ test: /\.js$/,
+ loader: 'babel',
+ exclude: /node_modules/
+ },
+ {
+ test: /\.less$/,
+ loader: ExtractTextPlugin.extract("style-loader", "css-loader!less-loader")
+ }
+ ]
+ }
+ },
+ plugins: [
+ new ExtractTextPlugin(path.join('example.css'))
+ ]
+ */
