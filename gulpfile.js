@@ -42,6 +42,7 @@ gulp.task('demo-webpack', function(done) {
      },*/
     filename: config.name+".js",
     publicPath: "/example/js",
+
     //headers: { "X-Custom-Header": "yes" },
     stats: { colors: true }
   });

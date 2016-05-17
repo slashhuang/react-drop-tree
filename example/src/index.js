@@ -1,3 +1,4 @@
+
 /**
  * Created by slashhuang on 16/5/10.
  */
@@ -5,8 +6,6 @@ import React, { Component ,PropTypes} from 'react';
 import {render} from 'react/lib/ReactDOM';
 require('./public.less');
 import {DropDownMenu, MultiDropDownMenu, DropDownSelect,DropDownSuggestion} from "../../src/index.js";//联想功能组件
-
-console.log(DropDownMenu);
 export default class IndexModule extends Component {
     constructor(props,context){
         super(props,context);
@@ -123,3 +122,4 @@ export default class IndexModule extends Component {
     }
 }
 render(<IndexModule/>,document.getElementById('root'));
+

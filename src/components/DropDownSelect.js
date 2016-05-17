@@ -42,7 +42,9 @@ export default class DropDownSelect extends Component {
             {
                 selectDataSource&&selectDataSource.map((ele)=>{
                     let name = ele.name;
-                    return <li className="select-drop-down-input" onClick={()=>{this.checkboxHandler(ele)}}>
+                    return <li className="select-drop-down-input"
+                               key={ele.name}
+                               onClick={()=>{this.checkboxHandler(ele)}}>
                         <i className={formGroup.indexOf(name)<0?'check-box':'check-box active'}>
                             <b></b>
                         </i>

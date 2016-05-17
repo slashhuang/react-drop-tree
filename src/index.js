@@ -9,5 +9,10 @@ let DropDown={
     DropDownSelect,
     DropDownSuggestion
 };
-
+if(window.Eagleui){
+    Eagleui.DropDown = DropDown;
+}else{
+    window.DropDown=DropDown
+};
 module.exports=DropDown;
+

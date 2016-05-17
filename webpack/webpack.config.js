@@ -8,7 +8,6 @@ var ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 module.exports ={
     entry:[path.join(process.cwd(),'src/index.js')],
-    devtoll:'source-map',
     resolve:{
         modulesDirectories: [
             'node_modules',
@@ -28,11 +27,24 @@ module.exports ={
             commonjs: 'react',
             amd: 'react'
         },
+        'eagle-ui': {
+            root: 'Eagleui',
+            commonjs2: 'eagle-ui',
+            commonjs: 'eagle-ui',
+            amd: 'eagle-ui'
+        },
+
         'react/lib/ReactDOM': {
             root: 'ReactDom',
             commonjs2: 'react/lib/ReactDOM',
             commonjs: 'react/lib/ReactDOM',
             amd: 'react/lib/ReactDOM'
+        },
+        'eagle-ui/lib/utils/Component': {
+            root: 'Component',
+            commonjs2: 'eagle-ui/lib/utils/Component',
+            commonjs: 'eagle-ui/lib/utils/Component',
+            amd: 'eagle-ui/lib/utils/Component'
         }
     }],
     module:{
@@ -42,10 +54,15 @@ module.exports ={
                 loaders: ['babel'],
                 exclude: /node_modules/
             },
-            {
-                test: /\.less$/,
-                loader: ExtractTextPlugin.extract("style-loader", "css-loader!less-loader")
-            }
+            //{
+            //    test: /\.less$/,
+            //
+            //    loader: "style-loader!css-loader!less-loader"
+            //}/
+             {
+             test: /\.less$/,
+             loader: ExtractTextPlugin.extract("style-loader", "css-loader!less-loader")
+             }
         ]
     },
     plugins: [

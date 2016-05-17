@@ -73,7 +73,7 @@ export default class MultiDropDownMenu extends Component {
         let xml = null;
         let {formGroup}=this.state;
         if(type=='branch'){
-            xml = <li key={ele.typeName} className={index==activeIndex?"on":''}>
+            xml = <li key={depth+ele.typeName} className={index==activeIndex?"on":''}>
                 <div className='multi-drop-down-list-content'
                      onMouseOver={()=>{
                                     this.calculateNextMenuTree(depth,index)
@@ -84,7 +84,7 @@ export default class MultiDropDownMenu extends Component {
                 <em></em>
             </li>
         }else{
-            xml = <li className="select-drop-down-input" onClick={()=>{this.checkboxHandler(ele)}}>
+            xml = <li className="select-drop-down-input" onClick={()=>{this.checkboxHandler(ele)}} key={depth+ele.typeName}>
                 <i className={formGroup.indexOf(ele)<0?'check-box':'check-box active'}>
                     <b></b>
                 </i>

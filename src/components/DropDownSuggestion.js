@@ -59,8 +59,10 @@ export default class DropDownSuggestion extends Component {
         let XML = formGroup&&formGroup.length>0?<div className="question-multi-menu-body">
             <ul className="select-drop-down-list">
                 {
-                    formGroup&&formGroup.map((ele)=>{
-                        return <li className="select-drop-down-input" onClick={()=>{this.clickHandler(ele)}}>
+                    formGroup&&formGroup.map((ele,index)=>{
+                        return <li className="select-drop-down-input"
+                                   key={ele+index}
+                                   onClick={()=>{this.clickHandler(ele)}}>
                             <div>{ele}</div>
                         </li>
                     })

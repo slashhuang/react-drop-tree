@@ -1,24 +1,22 @@
-# module-template
+# eg-dropdown
 
-这是一个模块组件开发的脚手架项目，用于快速搭建模块开发项目。
+使用react构建pc端应用的下拉菜单解决方案，配合eagle-ui将使界面和功能更完善
 
 ## 使用
 
-- 下载此项目至本地，修改项目名称和package.json里的信息；
-- git remote rm origin
-- git remote add origin {你的仓库地址}  例如：git remote add origin git@code.dianpingoa.com:pc-trade-f2e/apollo-template-static.git
-- git fetch
-- git pull origin master
+``` javascript
+	import {DropDownMenu, MultiDropDownMenu, DropDownSelect,DropDownSuggestion} from "eg-dropdown";
+    	class ModuleName extends Component {
+    	render(){
+    	    	<MultiDropDownMenu  dropDownData={mockMultiDropData} title="树状列表选择" ref="MultiDropDownMenu"/>
+    	}
+    	}
+```
 
-- 全局安装smartDoc 用于生成文档
 
 ## Command
 
-```
-	#测试	
-	npm run test	
-	#打包	
-	npm run build	
+```	
 	#例子演示	
 	npm run demo	
 ```
