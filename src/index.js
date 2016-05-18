@@ -1,4 +1,4 @@
-require('../css/index.less')
+require('../css/index.less');
 import DropDownMenu from './components/DropDownMenu.js';//单向下拉菜单
 import MultiDropDownMenu from './components/MultiDropDownMenu.js';//下拉层级菜单
 import DropDownSelect from "./components/DropDownSelect.js";//下拉多选框

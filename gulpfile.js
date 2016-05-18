@@ -49,6 +49,15 @@ gulp.task('demo-webpack', function(done) {
   server.listen(8081, "localhost", function() {});
 
 });
+gulp.task('example-webpack',function(done){
+  webpack(demoWebpackConfig).run(function(err, stats) {
+    if(err) throw new gutil.PluginError("example-webpack", err);
+    gutil.log("[webpack]", stats.toString({
+      // output options
+    }));
+    done();
+  });
+});
 
 gulp.task('require-webpack', function(done) {
   webpack(webpackConfig).run(function(err, stats) {

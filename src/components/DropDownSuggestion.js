@@ -4,33 +4,22 @@
  */
 import React, { Component ,PropTypes} from 'react';
 import {findDOMNode} from 'react-dom';
+
 export default class DropDownSuggestion extends Component {
+
     constructor(props,context){
         super(props,context);
         this.state={
             formGroup:[],//满足联想要求的下拉框
             targetContact:{},//选中的目标联系人
             customerClassName:'',
-            placeHolder:props.title||'',
+            placeHolder:'',
             title:'',//展示的数据
-            status:false
+            pressToIndex:-1,//初始化键盘按钮
+            status:true//点击enter隐藏
         };
         this.formData=this.state.targetContact;
     }
-    static defaultProps={
-        dropDownData:[],
-        title:'下拉选择框'
-    };
-    static propTypes= {
-        /**
-         * ui展示的数据结构中的键值
-         * */
-        title:PropTypes.string,
-        /**
-         * 初始化展示头部文字
-         * */
-        dropDownData:PropTypes.array
-    };
     componentDidMount(){
         var that=this;
         findDOMNode(this.refs['suggestContainer']).addEventListener('mouseleave',()=>{
@@ -42,11 +31,19 @@ export default class DropDownSuggestion extends Component {
         });
     }
     judgeStatus(){
+        this.setState({
+            status:false
+        });
         if(Object.keys(this.state.targetContact).length<1){
-
+            //alert('请选择列表中的联系人数据');
         }
         this.formData=this.state.targetContact;
     }
+
+    /**
+     * 处理点击操作
+     * @param ele
+     */
     clickHandler(ele){
         this.setState({
             targetContact:ele,
@@ -54,48 +51,106 @@ export default class DropDownSuggestion extends Component {
             title:ele
         });
     }
+    renderKeyPress(activeIndex){
+        let {formGroup}=this.state;//列表总长度
+        function lengthHandle(ele){
+            if(ele<0){
+                return -1
+            }else if(ele>=formGroup.length){
+                //回归头部
+                return 0
+            }else{
+                return ele
+            }
+        }
+        let renderIndex=lengthHandle(activeIndex);
+        if(formGroup&&formGroup[renderIndex]){
+            this.setState({
+                pressToIndex:renderIndex,
+                targetContact:formGroup[renderIndex],
+                title:formGroup[renderIndex]
+            });
+        }else{
+            this.setState({
+                pressToIndex:renderIndex,
+                targetContact:{},
+                title:''
+            });
+        }
+    }
+    keyHandler(event){
+        let keyCode= event.keyCode;
+        switch (keyCode) {
+            case 27://esc
+                break;
+                return;
+            case 38: //up键
+                this.renderKeyPress(--this.state.pressToIndex)
+                return;
+            case 40: //down键
+                this.renderKeyPress(++this.state.pressToIndex)
+                return;
+            case 13: //enter
+                event.preventDefault();
+                event.stopPropagation();
+                this.renderKeyPress(this.state.pressToIndex);
+                this.setState({
+                    status:true
+                });
+                return;
+            default:
+                break;
+        }
+    }
     handleChange(value){
         var that =this;
         let {url}=this.props;
         this.setState({
-            title:value
+            title:value,
+            status:false
         });
-        /**
-         * 网络请求获取下拉框需要的数据
-         */
-        fetch(url).then(function(data){
-            return data.json()
-        }).then((data)=>{
+        debugger;
+        fetch(url).then(function(res){
+            return res.json();
+        }).then(function(data){
             that.setState({
-                formGroup:data['keywords'],
+                formGroup:data.keywords,
                 targetContact:{}
             })
-        }).catch(()=>{debugger});
+        });
     }
     renderChildMenu(formGroup){
+        let {pressToIndex,status}=this.state;
         let XML = formGroup&&formGroup.length>0?<div className="question-multi-menu-body">
             <ul className="select-drop-down-list">
                 {
                     formGroup&&formGroup.map((ele,index)=>{
-                        return <li className="select-drop-down-input"
-                                   key={ele+index}
+                        return <li className={pressToIndex==index?"select-drop-down-input on":'select-drop-down-input'}
                                    onClick={()=>{this.clickHandler(ele)}}>
                             <div>{ele}</div>
                         </li>
                     })
                 }
             </ul></div>:<div></div>;
+        if(status){
+            XML=null;
+        }
         return XML;
     }
     render(){
-        let {formGroup,title,placeHolder}=this.state;
+        let {formGroup,title}=this.state;
         return(
-            <div className={this.state.customerClassName} ref='suggestContainer'>
+            <div className={this.state.customerClassName} ref='suggestContainer' onKeyDown={this.keyHandler.bind(this)}>
                 <input className="drop-down-suggestion-head"
                        style={{outline:'none'}}
                        value={title}
-                       placeholder={placeHolder}
+                       placeholder={this.state.placeHolder}
                        onChange={(e)=>this.handleChange(e.target.value)}
+                       onFocus={()=>{
+                       this.setState({
+                       status:false
+                       })
+                       }}
                     />
                 {this.renderChildMenu(formGroup)}
             </div>

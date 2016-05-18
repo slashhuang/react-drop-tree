@@ -54,18 +54,14 @@ module.exports ={
                 loaders: ['babel'],
                 exclude: /node_modules/
             },
-            //{
-            //    test: /\.less$/,
-            //
-            //    loader: "style-loader!css-loader!less-loader"
-            //}/
-             {
-             test: /\.less$/,
-             loader: ExtractTextPlugin.extract("style-loader", "css-loader!less-loader")
-             }
+            {
+                test: /\.less$/,
+                loader: ExtractTextPlugin.extract("style-loader", "css-loader!less-loader")
+            }
         ]
     },
     plugins: [
         new ExtractTextPlugin(path.join('example.css'))
+
     ]
 };
