@@ -1,14 +1,14 @@
 {
   "name": "eg-dropdown",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "dropdown for react pc app",
   "main": "lib/",
   "repository": "git@github.com:future-team/eg-dropdown.git",
   "keywords": [
-    "engle-ui",
-    "eagle",
     "dropdown",
-    "react"
+    "react",
+    "engle-ui",
+    "eagle"
   ],
   "scripts": {
     "build": "node_modules/.bin/gulp && node_modules/.bin/gulp min",
