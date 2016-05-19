@@ -3,6 +3,31 @@
 @fontColor:#4F4F52;
 @fontLightGray:rgba(150,150,150,1);
 @seablue:#28A1C5;
+.common-input-cancel-button{
+  margin-left:13px;
+  display: inline-block;
+  vertical-align:middle;
+  .border-radius-func(100px);
+  background:rgba(224,224,224,0.9);
+  position: relative;
+  i{
+    position: absolute;
+    top:50%;
+    margin-top:-1px;
+    height:1px;
+    left:2px;
+    display: block;
+    background: rgba(255,255,255,1);
+  }
+  i.left-rotate{
+    .transform-func(rotate(135deg))
+  }
+  i.right-rotate{
+    .transform-func(rotate(45deg))
+  }
+}
+
+
 
 .box-shadow(@param1,@param2){
   -webkit-box-shadow:@param1,@param2;

@@ -4,6 +4,7 @@
  */
 import React, { Component ,PropTypes} from 'react';
 import {findDOMNode} from 'react-dom';
+import Drawing from '../utils/Drawing.js';//js图形界面
 
 export default class DropDownSuggestion extends Component {
 
@@ -109,7 +110,6 @@ export default class DropDownSuggestion extends Component {
             title:value,
             status:false
         });
-        debugger;
         fetch(url).then(function(res){
             return res.json();
         }).then(function(data){
@@ -137,21 +137,32 @@ export default class DropDownSuggestion extends Component {
         }
         return XML;
     }
+    cancelInput(){
+        this.setState({
+            pressToIndex:-1,
+            targetContact:{},
+            title:''
+        });
+    }
     render(){
         let {formGroup,title}=this.state;
+        let that= this;
         return(
+
             <div className={this.state.customerClassName} ref='suggestContainer' onKeyDown={this.keyHandler.bind(this)}>
-                <input className="drop-down-suggestion-head"
-                       style={{outline:'none'}}
-                       value={title}
-                       placeholder={this.state.placeHolder}
-                       onChange={(e)=>this.handleChange(e.target.value)}
-                       onFocus={()=>{
+                <div style={{width:'inherit',padding:'7px 9px'}} className="drop-down-suggestion-head">
+                    <input style={{outline:'none',border:'none',verticalAlign:'middle'}}
+                           value={title}
+                           placeholder={this.state.placeHolder}
+                           onChange={(e)=>this.handleChange(e.target.value)}
+                           onFocus={()=>{
                        this.setState({
                        status:false
                        })
                        }}
-                    />
+                        />
+                    <Drawing onClick={()=>{that.cancelInput()}} show={!!this.state.title}/>
+                </div>
                 {this.renderChildMenu(formGroup)}
             </div>
         );

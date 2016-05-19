@@ -97,6 +97,7 @@ export default class IndexModule extends Component {
 
         return (
             <div className="paddingSpace">
+
                 <div style={{fontSize:'12px',display:'inline-block',width:'200px'}}>
                     <MultiDropDownMenu dropDownData={mockMultiDropData} keyName='typeName' leafName='leaf' title="树状列表选择" ref="MultiDropDownMenu"/>
                 </div>
