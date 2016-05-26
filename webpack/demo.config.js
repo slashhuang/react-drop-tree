@@ -22,15 +22,9 @@ var getEntry =function() {
 };
 
 module.exports =extend({}, {
-    //entry:baseFileDir+'src/index.js',
-    devtool:'eval',
-    entry:[
-        'webpack-dev-server/client?http://localhost:8081',
-        'webpack/hot/only-dev-server',
-        './example/src/index.js'
-    ],
+    entry: './example/src/index.js',
     output:{
-        path:path.join(process.cwd(),'dist'),
+        path:path.join(process.cwd(),'example/js'),
         filename:config.name+'.js'
     },
     module:{
@@ -46,11 +40,7 @@ module.exports =extend({}, {
 
             }
         ]
-    },
-    plugins: [
-        new webpack.HotModuleReplacementPlugin(),
-        new webpack.NoErrorsPlugin()
-    ]
+    }
 });
 
 /*

@@ -4,7 +4,7 @@
  */
 import React, { Component ,PropTypes} from 'react';
 
-export default class MultiDropDownMenu extends Component {
+export default class MultiDropMenu extends Component {
 
     constructor(props,context){
         super(props,context);

@@ -6,7 +6,7 @@ import React, { Component ,PropTypes} from 'react';
 import {findDOMNode} from 'react-dom';
 import Drawing from '../utils/Drawing.js';//js图形界面
 
-export default class DropDownSuggestion extends Component {
+export default class DropSuggestion extends Component {
 
     constructor(props,context){
         super(props,context);

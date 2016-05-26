@@ -1,9 +1,9 @@
 {
-  "name": "eg-dropdown",
-  "version": "0.1.6",
-  "description": "dropdown for react pc app",
+  "name": "react-drop-tree",
+  "version": "0.1.1",
+  "description": "drop-tree solution for react pc app",
   "main": "lib/",
-  "repository": "git@github.com:future-team/eg-dropdown.git",
+  "repository": "https://github.com/slashhuang/react-drop-tree",
   "keywords": [
     "dropdown",
     "react",
@@ -21,7 +21,7 @@
     "name": "xiaogang.huang@dianping.com",
     "email": "xiaogang.huang@dianping.com"
   },
-  "contributors":[],
+  "contributors": [],
   "dependencies": {},
   "devDependencies": {
     "babel": "^6.0.15",
@@ -58,7 +58,7 @@
     "webpack-dev-server": "^1.10.1"
   },
   "bugs": {
-    "url": "https://github.com/future-team/eg-dropdown/issues"
+    "url": "https://github.com/slashhuang/react-drop-tree/issues"
   },
-  "homepage": "https://github.com/future-team/eg-dropdown"
+  "homepage": "https://github.com/slashhuang/react-drop-tree"
 }

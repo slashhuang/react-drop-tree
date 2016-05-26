@@ -4,7 +4,7 @@
  * 下拉多选框菜单
  */
 import React, { Component ,PropTypes} from 'react';
-export default class DropDownSelect extends Component {
+export default class DropSelect extends Component {
     constructor(props,context){
         super(props,context);
         this.state={

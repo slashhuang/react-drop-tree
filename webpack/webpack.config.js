@@ -62,6 +62,5 @@ module.exports ={
     },
     plugins: [
         new ExtractTextPlugin(path.join('example.css'))
-
     ]
 };
