@@ -1,6 +1,6 @@
 # react-drop-tree
 
->使用react构建pc端应用的下拉菜单解决方案，配合eagle-ui将使界面和功能更完善
+>使用react构建pc端应用的下拉菜单解决方案
 
 > Multidrop-downMenu 渲染树状层级勾选框，可支持无限层级,仅仅依赖简单的数据结构
  

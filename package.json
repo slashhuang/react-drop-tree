@@ -11,7 +11,7 @@
     "eagle"
   ],
   "scripts": {
-    "build": "node_modules/.bin/gulp && node_modules/.bin/gulp min",
+    "build": "node_modules/.bin/gulp",
     "test": "karma start",
     "demo": "node_modules/.bin/gulp demo",
     "doc": "smartDoc ||node_modules/.bin/smartDoc"

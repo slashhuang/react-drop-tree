@@ -42,24 +42,3 @@ module.exports =extend({}, {
         ]
     }
 });
-
-/*
- module:{
- module:{
- loaders:[
- {
- test: /\.js$/,
- loader: 'babel',
- exclude: /node_modules/
- },
- {
- test: /\.less$/,
- loader: ExtractTextPlugin.extract("style-loader", "css-loader!less-loader")
- }
- ]
- }
- },
- plugins: [
- new ExtractTextPlugin(path.join('example.css'))
- ]
- */
